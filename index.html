@@ -3,12 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://unpkg.com/vue@next" defer></script>
     <script src="script.js" defer></script>
-    <meta name="description" content="2017 Geneva Motor Show Website">
+
+    <meta name="description" content="Document">
     <title>Document</title>
 </head>
-<body>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <!--  ICONS  -->
+    <!--  Plus Icon  -->
+    <symbol id="plusIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    </symbol>
     
+    <!--  Arrow Back  -->
+    <symbol id="arrowBack" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </symbol>
+</svg>
+
+
+<body id="app">
+
+    <section id="mainpage" v-if="mainpage">
+        <article class="note">
+            <h2>en ting eller noget</h2>
+            <h3>I går kl 12</h3>
+            <p>ting og sager og ting og sager... eller noget    agh aølgihar pgnøarg  ørgmjaprh gparfhjøprfj dgdspgj daesg oasegndglkanglki apkigfa gkisjgnsl aspgjfagja</p>
+        </article>
+
+        <button class="svgButtons">
+            <svg class="   ">
+                <use xlink:href="#plusIcon" />
+            </svg>
+        </button>
+    </section>
+
+    <section id="addNote" class="note" v-else>
+        <h2>Hvordan har du det?</h2>
+        <input type="text">
+
+        <h2>Beskrivelse</h2>
+        <input type="text">
+
+        <button>Gem</button>
+    </section>
 </body>
 </html>

@@ -1,3 +1,46 @@
 body {
     background-color: rgb(230, 256, 256);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+}
+
+.svgButtons {
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    overflow: hidden;
+}
+
+.note {
+    background-color: white;
+    border-radius: 10px;
+    width: 80%;
+    margin: 5%;
+    padding: 5%;
+}
+
+.note h2 {
+    margin: 0;
+}
+
+.note h3 {
+    color: lightgray;
+    margin: 10px;
+}
+
+.note p {
+    margin-bottom: 0;
+    font-size: 1.3em;
+}
+
+#mainpage button {
+    background-color: seagreen;
+    color: white;
 }
