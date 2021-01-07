@@ -164,13 +164,15 @@
 <body id="app">
 
     <section id="mainpage" v-if="mainpage">
-        <article class="note">
-            <h2>en ting eller noget</h2>
-            <h3>I går kl 12</h3>
-            <p>ting og sager og ting og sager... eller noget    agh aølgihar pgnøarg  ørgmjaprh gparfhjøprfj dgdspgj daesg oasegndglkanglki apkigfa gkisjgnsl aspgjfagja</p>
+        <article class="note" v-for="note in notes">
+            <h2>{{ note.title }}</h2>
+            <h3>{{ test(note.date) }}</h3>
+            <p>{{ note.description }}</p>
         </article>
-        <!-- compute -->
-        <h2 id="noNotes" v-if="notes.length < 1">Du har endnu ikke oprettet en aktivitet</h2>
+
+        <h2 id="noNotes" v-if="noNotes">Du har endnu ikke oprettet en aktivitet</h2>
+
+        <button id="load" @click="load">load</button>
 
         <button class="svgButtons" @click="mainPageFalse">
             <svg>
@@ -181,39 +183,39 @@
 
     <section id="addNote" v-else>
         <h2>Hvordan har du det?</h2>
-        <input type="text" id="moodInput">
+        <input type="text" id="moodInput" @input="titleInput">
 
         <!-- emojis -->
-        <button class="svgButtons emojis">
+        <button class="svgButtons emojis" @click="moodInput(1)" :style="{color: emojiColor(1),}">
             <svg>
                 <use xlink:href="#1" />
             </svg>
         </button>
-        <button class="svgButtons emojis">
+        <button class="svgButtons emojis" @click="moodInput(2)" :style="{color: emojiColor(2),}">
             <svg>
                 <use xlink:href="#2" />
             </svg>
         </button>
-        <button class="svgButtons emojis">
+        <button class="svgButtons emojis" @click="moodInput(3)" :style="{color: emojiColor(3),}">
             <svg>
                 <use xlink:href="#3" />
             </svg>
         </button>
-        <button class="svgButtons emojis">
+        <button class="svgButtons emojis" @click="moodInput(4)" :style="{color: emojiColor(4),}">
             <svg>
                 <use xlink:href="#4" />
             </svg>
         </button>
-        <button class="svgButtons emojis">
+        <button class="svgButtons emojis" @click="moodInput(5)" :style="{color: emojiColor(5),}">
             <svg>
                 <use xlink:href="#5" />
             </svg>
         </button>
 
         <h2>Beskrivelse</h2>
-        <textarea id="commentInput"></textarea>
+        <textarea id="commentInput" @input="descriptionInput"></textarea>
 
-        <button id="saveButton">Gem</button>
+        <button id="saveButton" @click="saveInput">Gem</button>
     </section>
 </body>
 </html>
