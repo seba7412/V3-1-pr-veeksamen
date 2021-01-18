@@ -13,6 +13,7 @@
 </head>
 
 
+<!-- icons -->
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <!--  ICONS  -->
     <!--  Plus Icon  -->
@@ -158,16 +159,16 @@
         </g>
       </g>
     </symbol>
-  </svg>
+</svg>
 
 
 <body id="app">
 
     <section id="mainpage" v-if="mainpage">
-        <article class="note" v-for="note in notes">
+        <article class="note" v-for="note in notes" :key="note.date">
             <h2>{{ note.title }}</h2>
-            <h3>{{ test(note.date) }}</h3>
-            <p>{{ note.description }}</p>
+            <h3>{{ noteAge(note.date) }}</h3>
+           <p>{{ note.description }}</p>
         </article>
 
         <h2 id="noNotes" v-if="noNotes">Du har endnu ikke oprettet en aktivitet</h2>

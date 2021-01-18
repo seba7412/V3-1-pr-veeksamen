@@ -17,16 +17,17 @@ const app = Vue.createApp({
 
         // inputs
         saveInput() {
-            this.input.date = Date.parse(new Date);
+            this.input.date = Date.parse(new Date) / 1000;
             this.notes.push(Object.assign({}, this.input));
+            // this.notes.push(this.input);
+            localStorage.setItem("moodAppNotes", JSON.stringify(this.notes));
             this.mainPageTrue();
-            localStorage.setItem("moodAppNotes", this.notes);
 
             // test
             console.log(this.input)
-            console.log(this.notes)
-            console.log(this.noNotes)
-            console.log(this.notes.length)
+            // console.log(this.notes)
+            // console.log(this.noNotes)
+            // console.log(this.notes.length)
         },
         titleInput(event) {
             this.input.title = event.target.value;
@@ -46,11 +47,14 @@ const app = Vue.createApp({
         },
 
         // test
-        test(date) {
-            console.log(Date.parse(new Date))
-
-            // return Math.round(Date.parse(new Date) - date)
-            return Date.parse(new Date) - date
+        noteAge(date) {
+            if (date < 60) {
+                return Date.parse(new Date) / 1000 - date + "seconds ago"
+            }
+            else if (date / 60 < 60) {
+                return Date.parse(new Date) / 1000 - date + "minutes ago"
+            }
+            return Date.parse(new Date) / 1000 - date
         },
 
         load() {
@@ -67,6 +71,12 @@ const app = Vue.createApp({
             else {
                 return true;
              }
+        }
+    },
+
+    mounted() {
+        if (localStorage.getItem("moodAppNotes") != null) {
+            this.notes = JSON.parse(localStorage.getItem("moodAppNotes"));
         }
     },
 });
